@@ -1,15 +1,19 @@
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import Main from "./Main";
 import HomeStyle from "./styles";
 
 const dataBase = [];
 
 function Home() {
-  const { contacts, listAllContacts } = useContext(AuthContext);
+  const { status, contacts, listAllContacts } = useContext(AuthContext);
 
   useEffect(() => {
-    listAllContacts();
-  }, []);
+    if(status){
+      listAllContacts()
+    }
+    console.log(status)
+  }, [status]);
 
   const listar = contacts.map((e) => {
     let newUser = {
@@ -24,8 +28,7 @@ function Home() {
     return e.contact.id;
   });
 
-
-  console.log(dataBase);
+  // console.log(dataBase); 
   return (
     <HomeStyle>
       <ul>
@@ -37,6 +40,7 @@ function Home() {
           </li>
         ))}
       </ul>
+      <Main/>
     </HomeStyle>
   );
 }

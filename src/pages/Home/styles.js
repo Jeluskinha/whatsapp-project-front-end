@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 const HomeStyle = styled.div`
+  display: flex;
+  width: 100vw;
+  flex-direction: row;
+  background-color: blue;
   ul {
     height: 100vh;
     width: 250px;
